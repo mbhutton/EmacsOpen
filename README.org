@@ -39,6 +39,8 @@ Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v3
   Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
 - Act as a share target to invoke the command org-protocol convention of url, title, and text.
 - Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
+- Add a Homebrew formula
+- Docs, tests, CI (build,test,dependabot)
 - Companion project on iOS to route =org-protocol://= links to chosen iOS apps with their own URL schemes, such as =beorg://=
 * Potential scope
 ** Limited Shortcuts.app support
