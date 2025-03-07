@@ -3,5 +3,10 @@
 "Open thing in Emacs, do what I mean."
 
 Share and open files, web links, web page selection (Safari), and =org-protocol://= links in Emacs on macOS, starting the Emacs daemon and opening a frame if necessary.
+* Potential roadblocks
+** Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
+Potential issues with permissions, and environment variables. Fails within Shortcuts.app.
+** Can an unsigned macOS app start and stop a brew service?
+Potential permissions issues.
 * Background
 This started as a discussion on an [[https://github.com/d12frosted/homebrew-emacs-plus/pull/783][Emacs Plus PR]] thread.
