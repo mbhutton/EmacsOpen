@@ -12,6 +12,13 @@ Share and open files, web links, web page selection (Safari), and =org-protocol:
 - =open-org-protocol org-protocol://...= (implies =activate-frame=)
 * Target Emacs flavours
 Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but should work on Emacs flavours which manage a daemon via a =brew= service and communicate with Emacs via =emacsclient=.
+* Out of scope
+** No GUI
+All user interactions should be via a share action, or the =emacsopen= CLI command.
+All configuration should be a text file, probably TOML format.
+All responses should be via stdout (CLI), macOS error notification/alert, and maybe logging.
+** No AppleScript support
+Use Emacs lisp instead: ~emacsopen ensure-client && emacslient -e ...~
 * Potential roadblocks
 ** Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
 Potential issues with permissions, and environment variables. Fails within Shortcuts.app.
