@@ -12,6 +12,10 @@ Share and open files, web links, web page selection (Safari), and =org-protocol:
 - =open-org-protocol org-protocol://...= (implies =activate-frame=)
 * Target Emacs flavours
 Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but should work on Emacs flavours which manage a daemon via a =brew= service and communicate with Emacs via =emacsclient=.
+* Potential scope
+** Limited Shortcuts.app support
+Currently Shortcuts.app can't use =emacsclient= in Emacs Plus due to socket/env related issues.
+Support some way of opening a file or link via EmacsOpen either via CLI or a Siri Shortcut action.
 * Out of scope
 ** No GUI
 All user interactions should be via a share action, or the =emacsopen= CLI command.
