@@ -14,6 +14,29 @@ Share and open files, web links, web page selection (Safari), and =org-protocol:
 Targetting macOS Emacs flavours which run in daemon mode via =brew service=, communicating via =emacsclient=.
 
 Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but all related Emacs formulas should work the same way.
+* Roadmap
+** Address potential roadblocks to see if viable at all
+** Skeleton app
+*** Use icon from [[https://github.com/emacsfodder/emacs-icons-project][emacsfodder/emacs-icons-project]]
+*** Skeleton =emacsopen= command
+** Read config
+*** Location of =emacsclient=
+*** Name of brew service to use
+*** =org-protocol://= scheme config
+** Handle opening files via drag and drop and opening via Finder (with frame already open)
+** Handle =org-protocol://= links (with frame already open)
+*** To open an existing Org node by its Org ID
+*** To capture a web page, with url, title, and optional selected text
+*** To trigger =org-capture=, eg to add an inbox item
+** Always activate Emacs top window
+** Open frame if necessary
+** Start daemon if necessary, waiting until ready for =emacsclient= commands
+** =open -a EmacsOpen= should open Emacs, creating a frame if necessary, and activate Emacs
+** Ensure useful for emacs restart
+Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
+** Act as a share target to invoke the command org-protocol convention of url, title, and text.
+** Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
+** Companion project on iOS to route =org-protocol://= links to chosen iOS apps with their own URL schemes, such as =beorg://=
 * Potential scope
 ** Limited Shortcuts.app support
 Currently Shortcuts.app can't use =emacsclient= in Emacs Plus due to socket/env related issues.
