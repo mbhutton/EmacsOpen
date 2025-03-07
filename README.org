@@ -4,6 +4,12 @@
 
 Share and open files, web links, web page selection (Safari), and =org-protocol://= links in Emacs on macOS, starting the Emacs daemon and opening a frame if necessary.
 * Status: Planning / Vaporware
+* CLI command =emacsopen=
+- =ensure-client= (after which =emacsclient= should be ready, else error)
+- =ensure-frame= (implies =ensure-client=)
+- =activate-frame= (implies =ensure-frame=)
+- =open-files [FILE...]=  (implies =activate-frame=)
+- =open-org-protocol org-protocol://...= (implies =activate-frame=)
 * Target Emacs flavours
 Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but should work on Emacs flavours which manage a daemon via a =brew= service and communicate with Emacs via =emacsclient=.
 * Potential roadblocks
