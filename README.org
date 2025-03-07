@@ -4,6 +4,8 @@
 
 Share and open files, web links, web page selection (Safari), and =org-protocol://= links in Emacs on macOS, starting the Emacs daemon and opening a frame if necessary.
 * Status: Planning / Vaporware
+* Target Emacs flavours
+Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but should work on Emacs flavours which manage a daemon via a =brew= service and communicate with Emacs via =emacsclient=.
 * Potential roadblocks
 ** Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
 Potential issues with permissions, and environment variables. Fails within Shortcuts.app.
