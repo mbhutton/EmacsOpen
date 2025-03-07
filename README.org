@@ -1,3 +1,7 @@
 #+title: EmacsOpen.app (Vaporware)
+* Main idea
+"Open thing in Emacs, do what I mean."
+
+Share and open files, web links, web page selection (Safari), and =org-protocol://= links in Emacs on macOS, starting the Emacs daemon and opening a frame if necessary.
 * Background
 This started as a discussion on an [[https://github.com/d12frosted/homebrew-emacs-plus/pull/783][Emacs Plus PR]] thread.
