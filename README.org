@@ -11,7 +11,9 @@ Share and open files, web links, web page selection (Safari), and =org-protocol:
 - =open-files [FILE...]=  (implies =activate-frame=)
 - =open-org-protocol org-protocol://...= (implies =activate-frame=)
 * Target Emacs flavours
-Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but should work on Emacs flavours which manage a daemon via a =brew= service and communicate with Emacs via =emacsclient=.
+Targetting macOS Emacs flavours which run in daemon mode via =brew service=, communicating via =emacsclient=.
+
+Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but all related Emacs formulas should work the same way.
 * Potential scope
 ** Limited Shortcuts.app support
 Currently Shortcuts.app can't use =emacsclient= in Emacs Plus due to socket/env related issues.
