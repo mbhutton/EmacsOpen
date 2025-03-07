@@ -1,1 +1,3 @@
 #+title: EmacsOpen.app (Vaporware)
+* Background
+This started as a discussion on an [[https://github.com/d12frosted/homebrew-emacs-plus/pull/783][Emacs Plus PR]] thread.
