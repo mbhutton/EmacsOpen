@@ -8,7 +8,7 @@ Act as a share target for opening things in daemon mode Emacs, providing more ma
 
 Handles files, web links, web page selection (Safari), and =org-protocol://= links.
 
-macOS only. See Target Emacs flavours below.
+Targeting macOS Emacs flavours which run in daemon mode via =brew service= communicating via =emacsclient=, initially [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]].
 * Why?
 - To make opening things in Emacs and opening Emacs itself "Just Work", without having to think about what state Emacs is currently in, and without having to always leave an Emacs frame open.
 - To be able to open more things in Emacs than is supported natively, including web links (for org-capture) and =org-protocol://= links, to support easier sharing from other apps to Emacs.
@@ -29,10 +29,6 @@ macOS only. See Target Emacs flavours below.
 - =emacsopen eval COMMAND= Evaluate Emacs Lisp commands.
 ** Option 2: emacsclient-like
 Use similar syntax to =emacsclient=
-* Target Emacs flavours
-Targetting macOS Emacs flavours which run in daemon mode via =brew service=, communicating via =emacsclient=.
-
-Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but all related Emacs formulas should work the same way.
 * Roadmap
 - Address potential roadblocks to see if viable at all
   - Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
