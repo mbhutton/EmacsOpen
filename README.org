@@ -3,6 +3,10 @@
 "Open thing in Emacs, do what I mean."
 
 Share and open files, web links, web page selection (Safari), and =org-protocol://= links in Emacs on macOS, starting the Emacs daemon and opening a frame if necessary.
+* Why?
+- To make opening things in Emacs and opening Emacs itself "Just Work", without having to think about what state Emacs is currently in, and without having to always leave an Emacs frame open.
+- To be able to open more things in Emacs than is supported natively, including web links (for org-capture) and =org-protocol://= links, to support easier sharing from other apps to Emacs.
+- To achieve the above in a single tool with minimal configuration.
 * Status: Just starting
 - Some initial skeleton code.
 - Expect frequent history rewrites.
