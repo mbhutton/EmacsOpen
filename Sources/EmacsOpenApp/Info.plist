@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDisplayName</key>
+    <string>EmacsOpen</string>
+    <key>CFBundleIdentifier</key>
+    <string>mbhutton.EmacsOpen</string>
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+    <key>CFBundleExecutable</key>
+    <string>EmacsOpenApp</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>12.0</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>org-protocol</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>org-protocol</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>
