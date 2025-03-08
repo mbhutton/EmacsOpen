@@ -1,8 +1,8 @@
 #+title: EmacsOpen.app (Pre-Pre-Pre-Alpha)
 * Main idea
-"Open thing in Emacs, do what I mean."
+Make sure the Emacs daemon is running, make sure an Emacs frame is open, then open the given thing in Emacs.
 
-Share and open files, web links, web page selection (Safari), and =org-protocol://= links in Emacs on macOS, starting the Emacs daemon and opening a frame if necessary.
+Handles files, web links, web page selection (Safari), and =org-protocol://= links. macOS only.
 * Why?
 - To make opening things in Emacs and opening Emacs itself "Just Work", without having to think about what state Emacs is currently in, and without having to always leave an Emacs frame open.
 - To be able to open more things in Emacs than is supported natively, including web links (for org-capture) and =org-protocol://= links, to support easier sharing from other apps to Emacs.
