@@ -11,7 +11,7 @@ Share and open files, web links, web page selection (Safari), and =org-protocol:
 - Some initial skeleton code.
 - Expect frequent history rewrites.
 - Not even close to useful.
-* CLI command =emacsopen=
+* CLI command =emacsopen= subcommands
 - =emacsopen ensure-client= (after which =emacsclient= should be ready, else error)
 - =emacsopen ensure-frame= (implies =ensure-client=)
 - =emacsopen activate-frame= (implies =ensure-frame=)
