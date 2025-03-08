@@ -1,9 +1,12 @@
-#+title: EmacsOpen.app (Vaporware)
+#+title: EmacsOpen.app (Pre-Pre-Pre-Alpha)
 * Main idea
 "Open thing in Emacs, do what I mean."
 
 Share and open files, web links, web page selection (Safari), and =org-protocol://= links in Emacs on macOS, starting the Emacs daemon and opening a frame if necessary.
-* Status: Planning / Vaporware
+* Status: Just starting
+- Some initial skeleton code.
+- Expect frequent history rewrites.
+- Not even close to useful.
 * CLI command =emacsopen=
 - =ensure-client= (after which =emacsclient= should be ready, else error)
 - =ensure-frame= (implies =ensure-client=)
