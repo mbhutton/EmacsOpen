@@ -12,7 +12,7 @@ Share and open files, web links, web page selection (Safari), and =org-protocol:
 - =ensure-frame= (implies =ensure-client=)
 - =activate-frame= (implies =ensure-frame=)
 - =open-files [FILE...]=  (implies =activate-frame=)
-- =open-org-protocol org-protocol://...= (implies =activate-frame=)
+- =open-org-link org-protocol://...= (implies =activate-frame=)
 * Target Emacs flavours
 Targetting macOS Emacs flavours which run in daemon mode via =brew service=, communicating via =emacsclient=.
 
