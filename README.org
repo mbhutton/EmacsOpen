@@ -14,13 +14,16 @@ macOS only. See Target Emacs flavours below.
 - Expect frequent history rewrites.
 - Not even close to functional.
 - See roadmap below for rough plan.
-* CLI command =emacsopen= subcommands
+* CLI command =emacsopen= structure
+** Option 1: subcommands
 - =emacsopen ensure-client= (after which =emacsclient= should be ready, else error)
 - =emacsopen ensure-frame= (implies =ensure-client=)
 - =emacsopen activate-frame= (implies =ensure-frame=)
 - =emacsopen open-files-wait [FILE...]=  (implies =activate-frame=)
 - =emacsopen open-files-no-wait [FILE...]=  (implies =activate-frame=)
 - =emacsopen open-org-link org-protocol://...= (implies =activate-frame=)
+** Option 2: emacsclient-like
+Use similar syntax to =emacsclient=
 * Target Emacs flavours
 Targetting macOS Emacs flavours which run in daemon mode via =brew service=, communicating via =emacsclient=.
 
