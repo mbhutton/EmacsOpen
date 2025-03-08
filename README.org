@@ -22,6 +22,7 @@ macOS only. See Target Emacs flavours below.
 - =emacsopen open-files-wait [FILE...]=  (implies =activate-frame=)
 - =emacsopen open-files-no-wait [FILE...]=  (implies =activate-frame=)
 - =emacsopen open-org-link org-protocol://...= (implies =activate-frame=)
+- =emacsopen eval COMMAND= (implies =ensure-client=)
 ** Option 2: emacsclient-like
 Use similar syntax to =emacsclient=
 * Target Emacs flavours
@@ -53,6 +54,7 @@ Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v3
   Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
 - Act as a share target to invoke the command org-protocol convention of url, title, and text.
 - Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
+- Add =eval= subcommand (using =emacsclient -e=)
 - Add a Homebrew formula
 - Support in-terminal case
 - Docs, tests, CI (build,test,dependabot)
