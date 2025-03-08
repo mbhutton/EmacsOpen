@@ -1,4 +1,4 @@
-#+title: EmacsOpen.app (Pre-Pre-Pre-Alpha)
+#+title: EmacsOpen.app (Pre-Pre-Pre-Alpha, not ready for use)
 * Main idea
 Make sure the Emacs daemon is running, make sure an Emacs frame is open, then open the given thing in Emacs.
 
@@ -10,7 +10,8 @@ Handles files, web links, web page selection (Safari), and =org-protocol://= lin
 * Status: Just starting
 - Some initial skeleton code.
 - Expect frequent history rewrites.
-- Not even close to useful.
+- Not even close to functional.
+- See roadmap below for rough plan.
 * CLI command =emacsopen= subcommands
 - =emacsopen ensure-client= (after which =emacsclient= should be ready, else error)
 - =emacsopen ensure-frame= (implies =ensure-client=)
