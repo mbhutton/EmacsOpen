@@ -8,12 +8,12 @@ Share and open files, web links, web page selection (Safari), and =org-protocol:
 - Expect frequent history rewrites.
 - Not even close to useful.
 * CLI command =emacsopen=
-- =ensure-client= (after which =emacsclient= should be ready, else error)
-- =ensure-frame= (implies =ensure-client=)
-- =activate-frame= (implies =ensure-frame=)
-- =open-files-wait [FILE...]=  (implies =activate-frame=)
-- =open-files-no-wait [FILE...]=  (implies =activate-frame=)
-- =open-org-link org-protocol://...= (implies =activate-frame=)
+- =emacsopen ensure-client= (after which =emacsclient= should be ready, else error)
+- =emacsopen ensure-frame= (implies =ensure-client=)
+- =emacsopen activate-frame= (implies =ensure-frame=)
+- =emacsopen open-files-wait [FILE...]=  (implies =activate-frame=)
+- =emacsopen open-files-no-wait [FILE...]=  (implies =activate-frame=)
+- =emacsopen open-org-link org-protocol://...= (implies =activate-frame=)
 * Target Emacs flavours
 Targetting macOS Emacs flavours which run in daemon mode via =brew service=, communicating via =emacsclient=.
 
