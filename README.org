@@ -55,6 +55,6 @@ Support some way of opening a file or link via EmacsOpen either via CLI or a Sir
   - All configuration should be a text file, probably TOML format.
   - All responses should be via stdout (CLI), macOS error notification/alert, and maybe logging.
 - No AppleScript support
-  - Use Emacs lisp instead: ~emacsopen ensure-client && emacslient -e ...~
+  - Use Emacs lisp instead: ~emacsopen ensure-client && emacsclient -e ...~
 * Background
 This started as a discussion on an [[https://github.com/d12frosted/homebrew-emacs-plus/pull/783][Emacs Plus PR]] thread.
