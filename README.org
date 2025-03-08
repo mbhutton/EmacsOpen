@@ -4,7 +4,7 @@ Make sure the Emacs daemon is running, make sure an Emacs frame is open, then op
 
 Handles files, web links, web page selection (Safari), and =org-protocol://= links.
 
-macOS only. See Target Emacs flavours below.
+Targeting macOS Emacs flavours which run in daemon mode via =brew service= communicating via =emacsclient=, initially [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]].
 * Why?
 - To make opening things in Emacs and opening Emacs itself "Just Work", without having to think about what state Emacs is currently in, and without having to always leave an Emacs frame open.
 - To be able to open more things in Emacs than is supported natively, including web links (for org-capture) and =org-protocol://= links, to support easier sharing from other apps to Emacs.
@@ -25,10 +25,6 @@ macOS only. See Target Emacs flavours below.
 - =emacsopen eval COMMAND= (implies =ensure-client=)
 ** Option 2: emacsclient-like
 Use similar syntax to =emacsclient=
-* Target Emacs flavours
-Targetting macOS Emacs flavours which run in daemon mode via =brew service=, communicating via =emacsclient=.
-
-Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v30 initially, but all related Emacs formulas should work the same way.
 * Roadmap
 - Address potential roadblocks to see if viable at all
   - Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
@@ -57,6 +53,7 @@ Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v3
 - Add =eval= subcommand (using =emacsclient -e=)
 - Add a Homebrew formula
 - Support in-terminal case
+- Shell autocompletion of commands using [[https://github.com/apple/swift-argument-parser][apple/swift-argument-parser]]
 - Docs, tests, CI (build,test,dependabot)
 - Show visual feedback when getting Emacs ready (eg a HUD spinner) when taking too long
 - Companion project on iOS to route =org-protocol://= links to chosen iOS apps with their own URL schemes, such as =beorg://=
