@@ -55,7 +55,7 @@ Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v3
 - Act as a share target to invoke the command org-protocol convention of url, title, and text.
 - Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
 - Add =eval= subcommand (using =emacsclient -e=)
-- Add a Homebrew formula
+- Add a Homebrew formula, including shell completions
 - Support in-terminal case
 - Docs, tests, CI (build,test,dependabot)
 - Show visual feedback when getting Emacs ready (eg a HUD spinner) when taking too long
