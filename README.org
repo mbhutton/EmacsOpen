@@ -19,7 +19,7 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - Not even close to functional.
 - See roadmap below for rough plan.
 * CLI command =emacsopen= structure
-** Option 1: subcommands
+- =emacsopen <no-args>= Equivalent to =emacsopen activate-frame=
 - =emacsopen ensure-client= Make sure emacsclient is ready.
 - =emacsopen ensure-frame= Ensure an Emacs frame.
 - =emacsopen activate-frame= Activate Emacs frame.
@@ -27,8 +27,6 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - =emacsopen open-files-no-wait [FILE...]=  Open files in Emacs without waiting.
 - =emacsopen open-org-link org-protocol://...= Open the org-protocol link in Emacs.
 - =emacsopen eval COMMAND= Evaluate Emacs Lisp commands.
-** Option 2: emacsclient-like
-Use similar syntax to =emacsclient=
 * Roadmap
 - Address potential roadblocks to see if viable at all
   - Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
