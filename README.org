@@ -1,6 +1,10 @@
 #+title: EmacsOpen.app (Pre-Pre-Pre-Alpha, not ready for use)
 * Main idea
-Make sure the Emacs daemon is running, make sure an Emacs frame is open, then open the given thing in Emacs.
+Act as a share target for opening things in daemon mode Emacs, providing more macOS app-like behaviour:
+- ensure the Emacs daemon is running
+- ensure an Emacs frame is open
+- open the given thing in Emacs
+- raise the Emacs frame to the front
 
 Handles files, web links, web page selection (Safari), and =org-protocol://= links.
 
