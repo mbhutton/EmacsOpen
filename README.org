@@ -37,7 +37,7 @@ Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v3
 - Skeleton app
   - Use icon from [[https://github.com/emacsfodder/emacs-icons-project][emacsfodder/emacs-icons-project]]
   - Skeleton =emacsopen= command
-- Read config
+- Read config (see also 'Auto detection' below)
   - Location of =emacsclient=
   - Name of brew service to use
   - =org-protocol://= scheme config
