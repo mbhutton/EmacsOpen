@@ -31,7 +31,7 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - Skeleton app
   - Use icon from [[https://github.com/emacsfodder/emacs-icons-project][emacsfodder/emacs-icons-project]]
   - Skeleton =emacsopen= command
-- Read config
+- Read config (see also 'Auto detection' below)
   - Location of =emacsclient=
   - Name of brew service to use
   - =org-protocol://= scheme config
