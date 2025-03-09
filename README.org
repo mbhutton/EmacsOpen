@@ -61,6 +61,9 @@ Focusing on [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] v3
 - Show visual feedback when getting Emacs ready (eg a HUD spinner) when taking too long
 - Companion project on iOS to route =org-protocol://= links to chosen iOS apps with their own URL schemes, such as =beorg://=
 * Potential scope
+** Auto detection instead of relying on config
+- Auto-detect Emacs brew service name if not configured, eg using ~brew services list --json~
+- Auto-detect emacsclient path if not configured if at =/opt/homebrew/bin/emacsclient=
 ** Limited Shortcuts.app support
 Currently Shortcuts.app can't use =emacsclient= in Emacs Plus due to socket/env related issues.
 Support some way of opening a file or link via EmacsOpen either via CLI or a Siri Shortcut action.
