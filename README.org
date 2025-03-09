@@ -1,4 +1,4 @@
-#+title: EmacsOpen.app (Pre-Pre-Pre-Alpha, not ready for use)
+#+title: EmacsOpen.app (Pre-Alpha, not ready for use)
 * Main idea
 Act as a share target for opening things in daemon mode Emacs, providing more macOS app-like behaviour:
 - ensure the Emacs daemon is running
@@ -15,7 +15,7 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - To achieve the above in a single tool with minimal configuration.
 * Status: Just starting
 - Some initial skeleton code.
-- Subset of CLI commands implemented.
+- Most of the CLI commands implemented.
 - Expect frequent history rewrites.
 - See roadmap below for rough plan.
 - Not ready for public use.
@@ -29,37 +29,42 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - =emacsopen open-org-link org-protocol://...= Open the org-protocol link in Emacs.
 - =emacsopen eval COMMAND= Evaluate Emacs Lisp commands.
 * Roadmap
-- Address potential roadblocks to see if viable at all
-  - Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
+- [ ] Address potential roadblocks to see if viable at all
+  - [ ] Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
     - Potential issues with permissions, and environment variables. Fails within Shortcuts.app.
-  - Can an unsigned macOS app start and stop a brew service? Potential permissions issues.
-- Skeleton app
-  - Use icon from [[https://github.com/emacsfodder/emacs-icons-project][emacsfodder/emacs-icons-project]]
-  - Skeleton =emacsopen= command
-- Read config (see also 'Auto detection' below)
-  - Location of =emacsclient=
-  - Name of brew service to use
-  - =org-protocol://= scheme config
-- Handle opening files via drag and drop and opening via Finder (with frame already open)
-- Handle =org-protocol://= links (with frame already open)
-  - To open an existing Org node by its Org ID
-  - To capture a web page, with url, title, and optional selected text
-  - To trigger =org-capture=, eg to add an inbox item
-- Always activate Emacs top window
-- Open frame if necessary
-- Start daemon if necessary, waiting until ready for =emacsclient= commands
-- =open -a EmacsOpen= should open Emacs, creating a frame if necessary, and activate Emacs
-- Ensure useful for emacs restart
-  Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
-- Act as a share target to invoke the command org-protocol convention of url, title, and text.
-- Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
-- Add =eval= subcommand (using =emacsclient -e=)
+  - [ ] Can an unsigned macOS app start and stop a brew service? Potential permissions issues.
+- [ ] Skeleton app
+  - [ ] Use icon from [[https://github.com/emacsfodder/emacs-icons-project][emacsfodder/emacs-icons-project]]
+  - [X] Skeleton =emacsopen= command
+  - [ ] XCode project for app, using CLI/library as internal dependency
+- [ ] Read config (see also 'Auto detection' below)
+  - [ ] Location of =emacsclient=
+    - Can rely on PATH for the terminal case.
+  - [ ] Name of brew service to use
+  - [ ] =org-protocol://= scheme config
+    - Follow the most popular convention by default.
+- [ ] Handle opening files via drag and drop and opening via Finder (with frame already open)
+- [ ] Handle =org-protocol://= links (with frame already open)
+  - [ ] To open an existing Org node by its Org ID
+  - [ ] To capture a web page, with url, title, and optional selected text
+  - [ ] To trigger =org-capture=, eg to add an inbox item
+- [X] Always activate Emacs top window
+- [X] Open frame if necessary
+- [ ] Start daemon if necessary, waiting until ready for =emacsclient= commands
+- [ ] =open -a EmacsOpen= should open Emacs, creating a frame if necessary, and activate Emacs
+- [ ] Ensure useful for emacs restart
+  - Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
+- [ ] Act as a share target to invoke the command org-protocol convention of url, title, and text.
+- [ ] Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
+- [X] Add =eval= subcommand (using =emacsclient -e=)
 - Add a Homebrew formula, including shell completions
-- Support in-terminal case: =emacsclient --tty=
-- Shell autocompletion of commands using [[https://github.com/apple/swift-argument-parser][apple/swift-argument-parser]]
-- Docs, tests, CI (build,test,dependabot)
-- Show visual feedback when getting Emacs ready (eg a HUD spinner) when taking too long
-- Companion project on iOS to route =org-protocol://= links to chosen iOS apps with their own URL schemes, such as =beorg://=
+- [X] Support in-terminal case: =emacsclient --tty=
+- [X] Shell autocompletion of commands using [[https://github.com/apple/swift-argument-parser][apple/swift-argument-parser]]
+- [ ] Docs (expand this README)
+- [ ] Tests
+- [ ] CI (build, test, dependabot checks)
+- [ ] Show visual feedback when getting Emacs ready (eg a HUD spinner) when taking too long (GUI case only)
+- [ ] Companion project on iOS to route =org-protocol://= links to chosen iOS apps with their own URL schemes, such as =beorg://=
 * Potential scope
 ** Auto detection instead of relying on config
 - Auto-detect Emacs brew service name if not configured, eg using ~brew services list --json~
