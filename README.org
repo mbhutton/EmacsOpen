@@ -16,13 +16,13 @@ macOS only. See Target Emacs flavours below.
 - See roadmap below for rough plan.
 * CLI command =emacsopen= structure
 ** Option 1: subcommands
-- =emacsopen ensure-client= (after which =emacsclient= should be ready, else error)
-- =emacsopen ensure-frame= (implies =ensure-client=)
-- =emacsopen activate-frame= (implies =ensure-frame=)
-- =emacsopen open-files-wait [FILE...]=  (implies =activate-frame=)
-- =emacsopen open-files-no-wait [FILE...]=  (implies =activate-frame=)
-- =emacsopen open-org-link org-protocol://...= (implies =activate-frame=)
-- =emacsopen eval COMMAND= (implies =ensure-client=)
+- =emacsopen ensure-client= Make sure emacsclient is ready.
+- =emacsopen ensure-frame= Ensure an Emacs frame.
+- =emacsopen activate-frame= Activate Emacs frame.
+- =emacsopen open-files-wait [FILE...]=  Open files in Emacs, waiting until buffer closed.
+- =emacsopen open-files-no-wait [FILE...]=  Open files in Emacs without waiting.
+- =emacsopen open-org-link org-protocol://...= Open the org-protocol link in Emacs.
+- =emacsopen eval COMMAND= Evaluate Emacs Lisp commands.
 ** Option 2: emacsclient-like
 Use similar syntax to =emacsclient=
 * Target Emacs flavours
