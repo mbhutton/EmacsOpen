@@ -51,7 +51,7 @@ Use similar syntax to =emacsclient=
 - Act as a share target to invoke the command org-protocol convention of url, title, and text.
 - Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
 - Add =eval= subcommand (using =emacsclient -e=)
-- Add a Homebrew formula
+- Add a Homebrew formula, including shell completions
 - Support in-terminal case
 - Shell autocompletion of commands using [[https://github.com/apple/swift-argument-parser][apple/swift-argument-parser]]
 - Docs, tests, CI (build,test,dependabot)
