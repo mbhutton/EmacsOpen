@@ -15,19 +15,30 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - To achieve the above in a single tool with minimal configuration.
 * Status: Just starting
 - Some initial skeleton code.
-- Most of the CLI commands implemented.
+- Most of the CLI variants implemented, without daemon management.
 - Expect frequent history rewrites.
 - See roadmap below for rough plan.
 - Not ready for public use.
 * CLI command =emacsopen= structure
-- =emacsopen <no-args>= Equivalent to =emacsopen activate-frame=
-- =emacsopen ensure-client= Make sure emacsclient is ready.
-- =emacsopen ensure-frame= Ensure an Emacs frame.
-- =emacsopen activate-frame= Activate Emacs frame.
-- =emacsopen open-files-wait [FILE...]=  Open files in Emacs, waiting until buffer closed.
-- =emacsopen open-files-no-wait [FILE...]=  Open files in Emacs without waiting.
-- =emacsopen open-org-link org-protocol://...= Open the org-protocol link in Emacs.
-- =emacsopen eval COMMAND= Evaluate Emacs Lisp commands.
+- Syntax: =emacsopen [OPTIONS] [FILE...]=
+  - =OPTIONS: [--tty/-t] | [--eval/-e] | [--block/-b] [--create-frame/-c]=
+    - =--tty/-t= Use Emacs in terminal mode.
+    - =--eval/-e= Evaluate Emacs Lisp commands.
+    - =--block/-b= Block (wait) until Emacs has finished handling the given file or link. Default is to not wait.
+    - =--create-frame/-c= Always create a new frame rather than the default of reusing an existing one.
+    - The =--tty/-t= and =--eval/-e= options are mutually exclusive, and incompatible with =--block/-b= and =--create-frame/-c=.
+  - =FILE...= A set of files or an org-protocol link to open in Emacs.
+- Examples:
+  - To activate an Emacs frame, preferring to reuse an one:
+    - =emacsopen=
+  - To open a file or org-protocol link in the GUI:
+    - =emacsopen file.org=
+    - =emacsopen org-protocol://...=
+  - To open a file in the terminal:
+    - =emacsopen --tty README.org=
+  - To just ensure that the Emacs daemon is ready for commands:
+    - =emacsopen --eval nil=
+- To just ensure that emacsclient is ready: =emacsopen --eval nil=
 * Roadmap
 - [ ] Address potential roadblocks to see if viable at all
   - [ ] Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
@@ -40,7 +51,7 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - [ ] Read config (see also 'Auto detection' below)
   - [ ] Location of =emacsclient=
     - Can rely on PATH for the terminal case.
-  - [ ] Name of brew service to use
+  - [ ] Name of brew service to use for starting Emacs daemon
   - [ ] =org-protocol://= scheme config
     - Follow the most popular convention by default.
 - [ ] Handle opening files via drag and drop and opening via Finder (with frame already open)
@@ -56,10 +67,10 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
   - Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
 - [ ] Act as a share target to invoke the command org-protocol convention of url, title, and text.
 - [ ] Act as a Safari extension with support for sharing current page (including text selection) via =org-protocol=, including keyboard shortcut support
-- [X] Add =eval= subcommand (using =emacsclient -e=)
+- [X] Add =eval= support (using =emacsclient -e=)
 - Add a Homebrew formula, including shell completions
 - [X] Support in-terminal case: =emacsclient --tty=
-- [X] Shell autocompletion of commands using [[https://github.com/apple/swift-argument-parser][apple/swift-argument-parser]]
+- [X] Shell autocompletion of CLI arguments using [[https://github.com/apple/swift-argument-parser][apple/swift-argument-parser]]
 - [ ] Docs (expand this README)
 - [ ] Tests
 - [ ] CI (build, test, dependabot checks)
