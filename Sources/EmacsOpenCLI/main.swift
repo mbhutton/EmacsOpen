@@ -6,105 +6,56 @@ import Foundation
 struct EmacsOpenCLI: ParsableCommand {
 
     static let configuration = CommandConfiguration(
-        abstract: "A utility to integrate Emacs with macOS.",
-        subcommands: [
-            EnsureClient.self,
-            EnsureFrame.self,
-            ActivateFrame.self,
-            OpenFiles.self,
-            OpenOrgLink.self,
-            Eval.self,
-        ],
-        defaultSubcommand: ActivateFrame.self
+        commandName: "emacsopen",
+        abstract: "Open files and links in Emacs"
     )
-}
 
-struct EnsureClient: ParsableCommand {
-    static let configuration = CommandConfiguration(abstract: "Make sure emacsclient is ready.")
-
-    func run() throws {
-        exitIfFalse(ensureClient())
-    }
-}
-
-struct EnsureFrame: ParsableCommand {
-    static let configuration = CommandConfiguration(
-        abstract: "Ensure an Emacs frame.")
-
+    @Flag(name: .shortAndLong, help: "Block until buffer is closed.")
+    var block: Bool = false
     @Flag(name: .shortAndLong, help: "Create a new frame.")
     var createFrame: Bool = false
-
-    func run() throws {
-        exitIfFalse(ensureFrame(createFrame: createFrame))
-    }
-}
-
-struct ActivateFrame: ParsableCommand {
-    static let configuration = CommandConfiguration(
-        abstract: "Activate Emacs frame.")
-
-    @Flag(name: .shortAndLong, help: "Create a new frame.")
-    var createFrame: Bool = false
-
-    func run() throws {
-        exitIfFalse(activateFrame(createFrame: createFrame))
-    }
-}
-
-struct OpenFiles: ParsableCommand {
-    static let configuration = CommandConfiguration(
-        abstract: "Open files in Emacs, waiting until buffer closed.")
-
-    @Flag(name: .shortAndLong, help: "Wait until buffer is closed.")
-    var wait: Bool = false
-    @Flag(name: .shortAndLong, help: "Create a new frame.")
-    var createFrame: Bool = false
+    @Flag(name: .shortAndLong, help: "Evaluate Emacs Lisp commands.")
+    var eval: Bool = false
     @Flag(name: .shortAndLong, help: "Open files in terminal.")
     var tty: Bool = false
-    @Argument var files: [String]
+    @Argument(help: "File(s) or org-protocol link to open.")
+    var files: [String] = []
 
     func run() throws {
-        if tty {
-            if wait || createFrame {
-                FileHandle.standardError.write(
-                    "The --tty options is incompatible with --wait and --create-frame\n"
-                        .data(using: .utf8)!)
-                Darwin.exit(1)
+        if tty && (block || createFrame || eval) {
+            failAndExit("The --tty option is incompatible with all other OPTIONS\n")
+        }
+        if eval && (tty || block || createFrame) {
+            failAndExit("The --eval option is incompatible with all other OPTIONS\n")
+        }
+        if eval {
+            if files.count == 1 {
+                failIfFalse(evalInEmacs(command: files[0]))
             } else {
-                exitIfFalse(openFilesInTerminal(files: files))
+                failAndExit("The --eval option requires exactly one command argument\n")
             }
+        } else if tty {
+            failIfFalse(openInTerminal(filesOrLink: files))
         } else {
-            exitIfFalse(
-                openFilesInGui(files: files, wait: wait, createFrame: createFrame))
+            if block && files.isEmpty {
+                failAndExit("The --block option requires at least one file or org-protocol link argument\n")
+            }
+            if files.isEmpty {
+                failIfFalse(activateFrame(createFrame: createFrame))
+            } else {
+                failIfFalse(openInGui(filesOrLink: files, block: block, createFrame: createFrame))
+            }
         }
     }
 }
 
-struct OpenOrgLink: ParsableCommand {
-    static let configuration = CommandConfiguration(
-        abstract: "Open the org-protocol link in Emacs.")
-
-    @Flag(name: .shortAndLong, help: "Create a new frame.")
-    var createFrame: Bool = false
-    @Argument var link: String
-
-    func run() throws {
-        exitIfFalse(openOrgLink(link: link, createFrame: createFrame))
-    }
+func failAndExit(_ message: String) {
+    let formattedMessage: Data = message.data(using: .utf8)!
+    FileHandle.standardError.write(formattedMessage)
+    Darwin.exit(1)
 }
 
-struct Eval: ParsableCommand {
-    static let configuration = CommandConfiguration(
-        abstract: "Evaluate Emacs Lisp commands.")
-
-    @Argument var command: String
-
-    func run() throws {
-        exitIfFalse(evalInEmacs(command: command))
-    }
-}
-
-func exitIfFalse(_ flag: Bool) {
+func failIfFalse(_ flag: Bool) {
     if !flag {
         Darwin.exit(1)
     }
