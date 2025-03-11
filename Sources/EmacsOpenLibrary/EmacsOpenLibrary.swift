@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 
 private func ensureClient() -> Bool {
@@ -36,17 +37,29 @@ private func ensureFrame(createFrame: Bool = false) -> Bool {
   }
 }
 
+/// Raise the first Emacs frame, if it exists.
+/// Returns whether was able to send the command.
+private func raiseFirstEmacsFrameSafe() -> Bool {
+  // PORTABILITY: Emacs flavours which don't have an Emacs.app will need a different approach.
+  //   Need a portable command which doesn't hang when run shortly after restarting the daemon.
+  //   For now, assume an Emacs.app.
+  let bundleID: String = "org.gnu.Emacs"
+  if let app: NSRunningApplication = NSRunningApplication.runningApplications(
+    withBundleIdentifier: bundleID
+  ).first {
+    return app.activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
+  }
+  return false
+}
+
 public func activateFrame(createFrame: Bool = false) -> Bool {
+  // Early activation attempt before ensureFrame call, to speed up common case where a frame already exists
+  _ = raiseFirstEmacsFrameSafe()
   if !ensureFrame(createFrame: createFrame) {
     return false
   }
   // The intention is a command that also supports Emacs flavours which don't have an Emacs.app
-  return runCommandAndCheck(
-    // PORTABILITY: Emacs flavours which don't have an Emacs.app will need a different approach.
-    //   Need a portable command which doesn't hand when run shortly after restarting the daemon.
-    //   For now, assume an Emacs.app.
-    "osascript -e 'tell application \"Emacs\" to activate'"
-  )
+  return raiseFirstEmacsFrameSafe()
 }
 
 public func openInGui(filesOrLink: [String], block: Bool, createFrame: Bool) -> Bool {
