@@ -130,15 +130,15 @@ private func runEmacsClient(_ argumentsString: String) -> CommandResult {
 private func execEmacsClient(arguments: [String]) {
   let emacsClientPath: String = getEmacsClientPath()
   // Create a null-terminated array of C strings
-  let args: [String] = [emacsClientPath] + arguments
-  let cArgs: [UnsafeMutablePointer<CChar>?] = args.map { strdup($0) } + [nil]
+  let commandAndArgsStrings: [String] = [emacsClientPath] + arguments
+  let commandAndArgsCStrings: [UnsafeMutablePointer<CChar>?] = commandAndArgsStrings.map { strdup($0) } + [nil]
 
   // Replace current process with the new command
-  print("Running command (via exec): \(emacsClientPath) \(arguments.joined(separator: " "))")
-  execvp(emacsClientPath, cArgs)
+  print("Running command (via exec): \(commandAndArgsStrings.joined(separator: " "))")
+  execvp(emacsClientPath, commandAndArgsCStrings)
 
   // Will only reach this point if the execvp call failed
-  perror("\(emacsClientPath) call failed")
+  perror("Failed to replace process with \(emacsClientPath)")
   exit(EXIT_FAILURE)
 }
 
