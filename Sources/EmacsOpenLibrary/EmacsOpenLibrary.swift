@@ -2,7 +2,7 @@ import AppKit
 import Foundation
 
 private func ensureClient() -> Bool {
-  let result: CommandResult = runCommand("emacsclient --eval '(+ 40 2)'")
+  let result: CommandResult = runEmacsClient("--eval '(+ 40 2)'")
   let stdoutTrimmed: String = result.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
 
   if stdoutTrimmed != "42" || result.exitCode != 0 {
@@ -23,15 +23,15 @@ private func ensureFrame(createFrame: Bool = false) -> Bool {
   }
 
   if createFrame {
-    return runCommandAndCheck("emacsclient --create-frame --no-wait")
+    return runEmacsClientAndCheck("--create-frame --no-wait")
   }
 
   // Run this command, then check if the result is 1. If it is 1, then print foo: emacsclient --eval '(length (frame-list))'
-  let result: CommandResult = runCommand("emacsclient --eval '(length (frame-list))'")
+  let result: CommandResult = runEmacsClient("--eval '(length (frame-list))'")
   let resultTrimmed: String = result.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
   // PORTABILITY:With Doom and Emacs-plus there's always 1 frame, even if none are visible
   if resultTrimmed == "1" || resultTrimmed == "0" {
-    return runCommandAndCheck("emacsclient --create-frame --no-wait")
+    return runEmacsClientAndCheck("--create-frame --no-wait")
   } else {
     return true
   }
@@ -72,7 +72,7 @@ public func openInGui(filesOrLink: [String], block: Bool, createFrame: Bool) -> 
   }
   let filesString: String = filesOrLink.joined(separator: " ")
   let blockClause: String = block ? "" : "--no-wait "
-  return runCommandAndCheck("emacsclient \(blockClause)\(filesString)")
+  return runEmacsClientAndCheck("\(blockClause)\(filesString)")
 }
 
 public func openInTerminal(filesOrLink: [String]) -> Bool {
@@ -81,7 +81,7 @@ public func openInTerminal(filesOrLink: [String]) -> Bool {
   }
   var arguments: [String] = ["--tty"]
   arguments.append(contentsOf: filesOrLink)
-  execCommand("emacsclient", arguments: arguments)
+  execEmacsClient(arguments: arguments)
   return false  // Reaching here would be a bug
 }
 
@@ -89,7 +89,7 @@ public func evalInEmacs(command: String) -> Bool {
   if !ensureClient() {
     return false
   }
-  execCommand("emacsclient", arguments: ["--eval", command])
+  execEmacsClient(arguments: ["--eval", command])
   return false  // Reaching here would be a bug
 }
 
@@ -99,20 +99,21 @@ struct CommandResult {
   let exitCode: Int32
 }
 
-private func runCommandAndCheck(_ command: String) -> Bool {
-  return runCommand(command).exitCode == 0
+private func runEmacsClientAndCheck(_ argumentsString: String) -> Bool {
+  return runEmacsClient(argumentsString).exitCode == 0
 }
 
-private func runCommand(_ command: String) -> CommandResult {
+private func runEmacsClient(_ argumentsString: String) -> CommandResult {
   let task: Process = Process()
   task.launchPath = "/bin/bash"
-  task.arguments = ["-c", command]
+  let fullCommand: String = getEmacsClientPath() + " " + argumentsString
+  task.arguments = ["-c", fullCommand]
 
   let pipeStdout: Pipe = Pipe()
   let pipeStderr: Pipe = Pipe()
   task.standardOutput = pipeStdout
   task.standardError = pipeStderr
-  print("Running command: \(command)")
+  print("Running command: \(fullCommand)")
   task.launch()
   task.waitUntilExit()
 
@@ -126,16 +127,22 @@ private func runCommand(_ command: String) -> CommandResult {
   )
 }
 
-private func execCommand(_ command: String, arguments: [String]) {
+private func execEmacsClient(arguments: [String]) {
+  let emacsClientPath: String = getEmacsClientPath()
   // Create a null-terminated array of C strings
-  let args: [String] = [command] + arguments
+  let args: [String] = [emacsClientPath] + arguments
   let cArgs: [UnsafeMutablePointer<CChar>?] = args.map { strdup($0) } + [nil]
 
   // Replace current process with the new command
-  print("Running command (via exec): \(command) \(arguments.joined(separator: " "))")
-  execvp(command, cArgs)
+  print("Running command (via exec): \(emacsClientPath) \(arguments.joined(separator: " "))")
+  execvp(emacsClientPath, cArgs)
 
   // Will only reach this point if the execvp call failed
-  perror("\(command) call failed")
+  perror("\(emacsClientPath) call failed")
   exit(EXIT_FAILURE)
+}
+
+private func getEmacsClientPath() -> String {
+  // TODO: Make this configurable and/or auto-detect
+  return "/opt/homebrew/bin/emacsclient"
 }
