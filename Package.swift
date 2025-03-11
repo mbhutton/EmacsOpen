@@ -8,7 +8,7 @@ let package = Package(
     ],
     products: [
         .library(name: "EmacsOpenLibrary", targets: ["EmacsOpenLibrary"]),
-        .executable(name: "EmacsOpenCLI", targets: ["EmacsOpenCLI"]),
+        .executable(name: "emacsopen", targets: ["EmacsOpenCLI"]),
         .executable(name: "EmacsOpenApp", targets: ["EmacsOpenApp"]),
     ],
     dependencies: [
