@@ -10,15 +10,15 @@ struct EmacsOpenCLI: ParsableCommand {
         abstract: "Open files and links in Emacs"
     )
 
-    @Flag(name: .shortAndLong, help: "Block until buffer is closed.")
+    @Flag(name: .shortAndLong, help: "Block until buffer is closed.\nRequires at least one <file> or <link> argument.")
     var block: Bool = false
     @Flag(name: .shortAndLong, help: "Create a new frame.")
     var createFrame: Bool = false
-    @Flag(name: .shortAndLong, help: "Evaluate Emacs Lisp commands.")
+    @Flag(name: .shortAndLong, help: "Evaluate Emacs Lisp commands.\nIncompatible with all other OPTIONS.\nRequires exactly one <command> argument.")
     var eval: Bool = false
-    @Flag(name: .shortAndLong, help: "Open files in terminal.")
+    @Flag(name: .shortAndLong, help: "Open files in terminal.\nIncompatible with all other OPTIONS.")
     var tty: Bool = false
-    @Argument(help: "File(s) or org-protocol link to open.")
+    @Argument(help: "File(s) or org-protocol link to open, or single command in the --eval case.")
     var files: [String] = []
 
     func run() throws {
