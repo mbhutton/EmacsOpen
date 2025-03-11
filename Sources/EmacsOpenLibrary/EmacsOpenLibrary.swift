@@ -128,6 +128,7 @@ private func runEmacsClient(_ argumentsString: String) -> CommandResult {
 }
 
 private func execEmacsClient(arguments: [String]) {
+  // TODO:grok and update this
   let emacsClientPath: String = getEmacsClientPath()
   // Create a null-terminated array of C strings
   let commandAndArgsStrings: [String] = [emacsClientPath] + arguments
