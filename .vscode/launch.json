@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug EmacsOpenCLI (emacsopen)",
+            "program": "${workspaceFolder}/.build/debug/emacsopen",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "swift: Build Debug emacsopen"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug EmacsOpenApp",
+            "program": "${workspaceFolder}/.build/debug/EmacsOpenApp",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "swift: Build Debug EmacsOpenApp"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release EmacsOpenCLI (emacsopen)",
+            "program": "${workspaceFolder}/.build/release/emacsopen",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "swift: Build Release emacsopen"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release EmacsOpenApp",
+            "program": "${workspaceFolder}/.build/release/EmacsOpenApp",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "swift: Build Release EmacsOpenApp"
+        }
+    ]
+}
