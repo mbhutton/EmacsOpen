@@ -3,6 +3,10 @@ import Darwin
 import EmacsOpenLibrary
 import Foundation
 
+
+let execClause: String = "\nReplaces process with emacsclient process."
+let incompatibleClause: String = "\nIncompatible with all other OPTIONS."
+
 struct EmacsOpenCLI: ParsableCommand {
 
     static let configuration = CommandConfiguration(
@@ -14,9 +18,9 @@ struct EmacsOpenCLI: ParsableCommand {
     var block: Bool = false
     @Flag(name: .shortAndLong, help: "Create a new frame.")
     var createFrame: Bool = false
-    @Flag(name: .shortAndLong, help: "Evaluate Emacs Lisp commands.\nIncompatible with all other OPTIONS.\nRequires exactly one <command> argument.")
+    @Flag(name: .shortAndLong, help: "Evaluate Emacs Lisp commands.\nRequires exactly one <command> argument.\(incompatibleClause)\(execClause)")
     var eval: Bool = false
-    @Flag(name: .shortAndLong, help: "Open files in terminal.\nIncompatible with all other OPTIONS.")
+    @Flag(name: .shortAndLong, help: "Open files in terminal.\(incompatibleClause)\(execClause)")
     var tty: Bool = false
     @Argument(help: "File(s) or org-protocol link to open, or single command in the --eval case.")
     var files: [String] = []
