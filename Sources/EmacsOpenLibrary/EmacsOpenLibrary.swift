@@ -40,7 +40,7 @@ private func ensureFrame(createFrame: Bool = false) -> Bool {
 /// Raise the first Emacs frame, if it exists.
 /// Returns whether was able to send the command.
 private func raiseFirstEmacsFrameSafe() -> Bool {
-  // PORTABILITY: Emacs flavours which don't have an Emacs.app will need a different approach.
+  // PORTABILITY: Emacs formulas which don't have an Emacs.app will need a different approach.
   //   Need a portable command which doesn't hang when run shortly after restarting the daemon.
   //   For now, assume an Emacs.app.
   let bundleID: String = "org.gnu.Emacs"
@@ -58,7 +58,7 @@ public func activateFrame(createFrame: Bool = false) -> Bool {
   if !ensureFrame(createFrame: createFrame) {
     return false
   }
-  // The intention is a command that also supports Emacs flavours which don't have an Emacs.app
+  // The intention is a command that also supports Emacs formulas which don't have an Emacs.app
   return raiseFirstEmacsFrameSafe()
 }
 
