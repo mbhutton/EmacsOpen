@@ -57,6 +57,7 @@ Use similar syntax to =emacsclient=
 - Add =eval= subcommand (using =emacsclient -e=)
 - Add a Homebrew formula, including shell completions
 - Support in-terminal case
+- Shell autocompletion of commands using [[https://github.com/apple/swift-argument-parser][apple/swift-argument-parser]]
 - Docs, tests, CI (build,test,dependabot)
 - Show visual feedback when getting Emacs ready (eg a HUD spinner) when taking too long
 - Companion project on iOS to route =org-protocol://= links to chosen iOS apps with their own URL schemes, such as =beorg://=
