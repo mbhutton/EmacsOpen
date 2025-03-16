@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "EmacsOpen",
     platforms: [
-        .macOS(.v12)
+        .macOS(.v12),
     ],
     products: [
         .library(name: "EmacsOpenLibrary", targets: ["EmacsOpenLibrary"]),
@@ -12,7 +12,7 @@ let package = Package(
 
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0")
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
     ],
     targets: [
         .target(
