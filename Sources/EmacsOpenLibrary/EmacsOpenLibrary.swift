@@ -4,7 +4,7 @@ import Foundation
 /// Ensures that emacsclient is ready to accept commands, or returns false if unable.
 private func ensureClient() -> Bool {
     let result: CommandResult = runEmacsClient("--eval '(+ 40 2)'")
-    let stdoutTrimmed: String = result.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
+    let stdoutTrimmed = result.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
 
     if stdoutTrimmed != "42" || result.exitCode != 0 {
         print(
@@ -26,7 +26,7 @@ private func ensureFrame(createFrame: Bool = false) -> Bool {
 
     // Run this command, then check if the result is 1. If it is 1, then print foo: emacsclient --eval '(length (frame-list))'
     let result: CommandResult = runEmacsClient("--eval '(length (frame-list))'")
-    let resultTrimmed: String = result.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
+    let resultTrimmed = result.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
     // PORTABILITY:With Doom and Emacs-plus there's always 1 frame, even if none are visible
     if resultTrimmed == "1" || resultTrimmed == "0" {
         return runEmacsClientAndCheck("--create-frame --no-wait")
@@ -63,8 +63,8 @@ public func openInGui(filesOrLink: [String], block: Bool, createFrame: Bool) -> 
         FileHandle.standardError.write("No files to open\n".data(using: .utf8)!)
         return false
     }
-    let filesString: String = filesOrLink.joined(separator: " ")
-    let blockClause: String = block ? "" : "--no-wait "
+    let filesString = filesOrLink.joined(separator: " ")
+    let blockClause = block ? "" : "--no-wait "
     return runEmacsClientAndCheck("\(blockClause)\(filesString)")
 }
 
@@ -108,8 +108,8 @@ private func runEmacsClient(_ argumentsString: String) -> CommandResult {
     task.launch()
     task.waitUntilExit()
 
-    let stdoutData: Data = pipeStdout.fileHandleForReading.readDataToEndOfFile()
-    let stderrData: Data = pipeStderr.fileHandleForReading.readDataToEndOfFile()
+    let stdoutData = pipeStdout.fileHandleForReading.readDataToEndOfFile()
+    let stderrData = pipeStderr.fileHandleForReading.readDataToEndOfFile()
 
     return CommandResult(
         stdout: String(data: stdoutData, encoding: .utf8) ?? "",
