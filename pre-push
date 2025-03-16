@@ -1,0 +1,17 @@
+#!/bin/bash
+# Pre-push hook to run linting checks
+
+echo "Running lint checks before pushing..."
+just lint
+
+# Store the exit code from the just command
+RESULT=$?
+
+# If just lint failed (non-zero exit), prevent push
+if [ $RESULT -ne 0 ]; then
+  echo "❌ Lint checks failed. Please fix the issues before pushing."
+  exit 1
+fi
+
+echo "✅ Lint checks passed! Proceeding with push."
+exit 0
