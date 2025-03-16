@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "lineBreakBeforeEachArgument" : true,
+    "lineLength": 120,
+    "indentation": {
+        "spaces": 4
+    },
+    "respectsExistingLineBreaks" : false,
+    "rules": {
+        "AllPublicDeclarationsHaveDocumentation" : true,
+        "OmitExplicitReturns" : true,
+        "OrderedImports": true,
+        "UseWhereClausesInForLoops" : true,
+        "ValidateDocumentationComments" : true
+    }
+}
