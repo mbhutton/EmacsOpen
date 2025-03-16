@@ -20,54 +20,39 @@ import SwiftUI
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationDidFinishLaunching(_: Notification) { print("Hello World from SwiftUI menu bar app!") }
+
+    let path = "/Users/matt/sw/emacsopen/emacsopen"
+
+    func applicationDidFinishLaunching(_: Notification) {
+        let path = "/Users/matt/sw/emacsopen/emacsopen"
+        runCommand("echo hello")
+        runCommand(path)
+
+        print("Hello World from SwiftUI menu bar app!")
+
+        runCommand("\(path)")
+
+        // NSApp.terminate(nil)
+    }
+    func applicationWillTerminate(_ notification: Notification) { print("bye from callback") }
+
+    func application(_ application: NSApplication, open urls: [URL]) {
+        for url in urls {
+            if url.scheme == "org-protocol" {
+                runCommand("\(path) emacsopen \(url.absoluteString)")
+            } else {
+                runCommand("\(path) eemacsopen \(url.path)")
+            }
+        }
+        NSApp.terminate(nil)
+    }
+
 }
 
-/*
- @objc(AppDelegate) // Make sure this is @objc to be recognized as the app delegate.
- class AppDelegate: NSObject, NSApplicationDelegate {
-
-     let path = "/Users/matt/sw/emacsopen/emacsopen"
-
-     func applicationDidFinishLaunching(_ notification: Notification) {
-         print("hello world app launched")
-         runCommand("\(path)")
-         NSApp.terminate(nil)
-     }
-
-     func applicationWillTerminate(_ notification: Notification) {
-         print("bye")
-         // Cleanup before app terminates
-     }
-     func application(_ application: NSApplication, open urls: [URL]) {
-         for url in urls {
-             if url.scheme == "org-protocol" {
-                 runCommand("\(path) emacsopen \(url.absoluteString)")
-             } else {
-                 runCommand("\(path) eemacsopen \(url.path)")
-             }
-         }
-         NSApp.terminate(nil)
-     }
-
-     func runCommand(_ command: String) {
-         let task = Process()
-         task.launchPath = "/bin/bash"
-         task.arguments = ["-c", command]
-         task.launch()
-         task.waitUntilExit()
-     }
- }
-
- func runCommand(_ command: String) {
-     let task = Process()
-     task.launchPath = "/bin/bash"
-     task.arguments = ["-c", command]
-     task.launch()
-     task.waitUntilExit()
- }
- let path = "/Users/matt/sw/emacsopen/emacsopen"
- runCommand("echo hello")
- runCommand(path)
-
- */
+func runCommand(_ command: String) {
+    let task = Process()
+    task.launchPath = "/bin/bash"
+    task.arguments = ["-c", command]
+    task.launch()
+    task.waitUntilExit()
+}
