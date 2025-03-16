@@ -5,13 +5,17 @@
     <key>CFBundleDisplayName</key>
     <string>EmacsOpen</string>
     <key>CFBundleIdentifier</key>
-    <string>mbhutton.EmacsOpen</string>
+    <string>com.github.mbhutton.EmacsOpen</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>CFBundleExecutable</key>
     <string>EmacsOpenApp</string>
     <key>LSMinimumSystemVersion</key>
     <string>12.0</string>
+    <key>LSUIElement</key>
+    <false />
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
