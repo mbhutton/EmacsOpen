@@ -3,22 +3,27 @@ import Darwin
 import EmacsOpenLibrary
 import Foundation
 
-
 let execClause: String = "\nReplaces process with emacsclient process."
 let incompatibleClause: String = "\nIncompatible with all other OPTIONS."
 
 struct EmacsOpenCLI: ParsableCommand {
-
     static let configuration = CommandConfiguration(
         commandName: "emacsopen",
         abstract: "Open files and links in Emacs"
     )
 
-    @Flag(name: .shortAndLong, help: "Block until buffer is closed.\nRequires at least one <file> or <link> argument.")
+    @Flag(
+        name: .shortAndLong,
+        help: "Block until buffer is closed.\nRequires at least one <file> or <link> argument."
+    )
     var block: Bool = false
     @Flag(name: .shortAndLong, help: "Create a new frame.")
     var createFrame: Bool = false
-    @Flag(name: .shortAndLong, help: "Evaluate Emacs Lisp commands.\nRequires exactly one <command> argument.\(incompatibleClause)\(execClause)")
+    @Flag(
+        name: .shortAndLong,
+        help:
+        "Evaluate Emacs Lisp commands.\nRequires exactly one <command> argument.\(incompatibleClause)\(execClause)"
+    )
     var eval: Bool = false
     @Flag(name: .shortAndLong, help: "Open files in terminal.\(incompatibleClause)\(execClause)")
     var tty: Bool = false
@@ -42,7 +47,8 @@ struct EmacsOpenCLI: ParsableCommand {
             failIfFalse(openInTerminal(filesOrLink: files))
         } else {
             if block && files.isEmpty {
-                failAndExit("The --block option requires at least one file or org-protocol link argument\n")
+                failAndExit(
+                    "The --block option requires at least one file or org-protocol link argument\n")
             }
             if files.isEmpty {
                 failIfFalse(activateFrame(createFrame: createFrame))
