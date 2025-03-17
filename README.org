@@ -15,9 +15,10 @@ Targeting macOS Emacs flavours which run in daemon mode via =brew service= commu
 - To achieve the above in a single tool with minimal configuration.
 * Status: Just starting
 - Some initial skeleton code.
+- Subset of CLI commands implemented.
 - Expect frequent history rewrites.
-- Not even close to functional.
 - See roadmap below for rough plan.
+- Not ready for public use.
 * CLI command =emacsopen= structure
 - =emacsopen <no-args>= Equivalent to =emacsopen activate-frame=
 - =emacsopen ensure-client= Make sure emacsclient is ready.
