@@ -8,17 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C95EB5392D82DEF700B38586 /* EmacsOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EB5382D82DEF400B38586 /* EmacsOpen.swift */; };
-		C95EB53A2D82E17B00B38586 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9779AB02D82D36600148496 /* AppKit.framework */; };
 		C95EB53D2D82E5C700B38586 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95EB53C2D82E5C700B38586 /* SwiftUI.framework */; };
 		C9DCF97F2D82DC18009DCE78 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF97C2D82DC18009DCE78 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C94966542D82D30300427100 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C95EB5382D82DEF400B38586 /* EmacsOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmacsOpen.swift; sourceTree = "<group>"; };
 		C95EB53C2D82E5C700B38586 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C972C4A42D82B697006991D5 /* EmacsOpen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmacsOpen.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9779AB02D82D36600148496 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		C9DCF9772D82DB38009DCE78 /* EmacsOpen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmacsOpen.entitlements; sourceTree = "<group>"; };
 		C9DCF97C2D82DC18009DCE78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -29,7 +26,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95EB53D2D82E5C700B38586 /* SwiftUI.framework in Frameworks */,
-				C95EB53A2D82E17B00B38586 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +36,6 @@
 			isa = PBXGroup;
 			children = (
 				C95EB53C2D82E5C700B38586 /* SwiftUI.framework */,
-				C9779AB02D82D36600148496 /* AppKit.framework */,
-				C94966542D82D30300427100 /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
