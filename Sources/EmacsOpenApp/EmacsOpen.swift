@@ -1,3 +1,4 @@
+import EmacsOpenLibrary
 import SwiftUI
 
 @main struct MenuBarApp: App {
@@ -30,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         print("Hello World from SwiftUI menu bar app!")
 
-        runCommand("\(path)")
+        _ = activateFrame(createFrame: false)
     }
     func applicationWillTerminate(_ notification: Notification) { print("bye from callback") }
 
