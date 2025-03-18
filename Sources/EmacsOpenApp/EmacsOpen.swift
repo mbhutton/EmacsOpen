@@ -11,8 +11,8 @@ import SwiftUI
 
                 Divider()
 
-                Button("Quit") {
-                    print("kbye")
+                Button("Quit EmacsOpen") {
+                    print("Quitting EmacsOpen")
                     NSApplication.shared.terminate(nil)
                 }.padding()
             }
