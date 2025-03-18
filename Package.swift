@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "EmacsOpen",
-    platforms: [.macOS(.v12)],
+    platforms: [.macOS(.v14)],
     products: [
         .library(name: "EmacsOpenLibrary", targets: ["EmacsOpenLibrary"]),
         .executable(name: "emacsopen", targets: ["EmacsOpenCLI"]),
