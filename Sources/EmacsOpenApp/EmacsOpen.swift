@@ -11,6 +11,20 @@ import SwiftUI
 
                 Divider()
 
+                Button("Activate Frame") {
+                    print("Activating Frame")
+                    _ = activateFrame()
+                }.padding()
+
+                Divider()
+
+                Button("Create Frame") {
+                    print("Creating Frame")
+                    _ = activateFrame(createFrame: true)
+                }.padding()
+
+                Divider()
+
                 Button("Quit EmacsOpen") {
                     print("Quitting EmacsOpen")
                     NSApplication.shared.terminate(nil)
