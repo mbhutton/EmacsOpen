@@ -5,24 +5,6 @@
       "request": "launch",
       "args": [],
       "cwd": "${workspaceFolder:EmacsOpen}",
-      "name": "Debug emacsopen",
-      "program": "${workspaceFolder:EmacsOpen}/.build/debug/emacsopen",
-      "preLaunchTask": "swift: Build Debug emacsopen"
-    },
-    {
-      "type": "lldb",
-      "request": "launch",
-      "args": [],
-      "cwd": "${workspaceFolder:EmacsOpen}",
-      "name": "Release emacsopen",
-      "program": "${workspaceFolder:EmacsOpen}/.build/release/emacsopen",
-      "preLaunchTask": "swift: Build Release emacsopen"
-    },
-    {
-      "type": "lldb",
-      "request": "launch",
-      "args": [],
-      "cwd": "${workspaceFolder:EmacsOpen}",
       "name": "Debug EmacsOpenCLI",
       "program": "${workspaceFolder:EmacsOpen}/.build/debug/EmacsOpenCLI",
       "preLaunchTask": "swift: Build Debug EmacsOpenCLI"
@@ -59,18 +41,36 @@
       "request": "launch",
       "args": [],
       "cwd": "${workspaceFolder:EmacsOpen}",
-      "name": "Debug EmacsOpenAppDummy",
-      "program": "${workspaceFolder:EmacsOpen}/.build/debug/EmacsOpenAppDummy",
-      "preLaunchTask": "swift: Build Debug EmacsOpenAppDummy"
+      "name": "Debug emacsopen",
+      "program": "${workspaceFolder:EmacsOpen}/.build/debug/emacsopen",
+      "preLaunchTask": "swift: Build Debug emacsopen"
     },
     {
       "type": "lldb",
       "request": "launch",
       "args": [],
       "cwd": "${workspaceFolder:EmacsOpen}",
-      "name": "Release EmacsOpenAppDummy",
-      "program": "${workspaceFolder:EmacsOpen}/.build/release/EmacsOpenAppDummy",
-      "preLaunchTask": "swift: Build Release EmacsOpenAppDummy"
+      "name": "Release emacsopen",
+      "program": "${workspaceFolder:EmacsOpen}/.build/release/emacsopen",
+      "preLaunchTask": "swift: Build Release emacsopen"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:EmacsOpen}",
+      "name": "Debug EmacsOpen",
+      "program": "${workspaceFolder:EmacsOpen}/.build/debug/EmacsOpen",
+      "preLaunchTask": "swift: Build Debug EmacsOpen"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:EmacsOpen}",
+      "name": "Release EmacsOpen",
+      "program": "${workspaceFolder:EmacsOpen}/.build/release/EmacsOpen",
+      "preLaunchTask": "swift: Build Release EmacsOpen"
     },
     {
       "type": "lldb",
