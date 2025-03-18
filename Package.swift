@@ -15,5 +15,11 @@ let package = Package(
             name: "EmacsOpenCLI",
             dependencies: [.product(name: "ArgumentParser", package: "swift-argument-parser"), "EmacsOpenLibrary"]
         ),
+        .executableTarget(
+            name: "_EmacsOpenApp",  // Only used to help VS Code provide intellisense for the EmacsOpenApp swift files.
+            dependencies: ["EmacsOpenLibrary"],
+            path: "Sources/EmacsOpenApp",
+            exclude: ["Info.plist", "EmacsOpen.entitlements"]
+        ),
     ]
 )
