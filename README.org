@@ -40,14 +40,10 @@ Targeting macOS Emacs formulas which run in daemon mode via =brew service= commu
     - =emacsopen --eval nil=
 - To just ensure that emacsclient is ready: =emacsopen --eval nil=
 * Roadmap
-- [ ] Address potential roadblocks to see if viable at all
-  - [ ] Can an unsigned macOS app invoke =emacsclient= to connect to Emacs when running?
-    - Potential issues with permissions, and environment variables. Fails within Shortcuts.app.
-  - [ ] Can an unsigned macOS app start and stop a brew service? Potential permissions issues.
-- [ ] Skeleton app
-  - [ ] Use icon from [[https://github.com/emacsfodder/emacs-icons-project][emacsfodder/emacs-icons-project]]
+- [X] Address potential roadblocks to see if viable at all: try calling =emacsclient= from the app
+- [X] Skeleton app
   - [X] Skeleton =emacsopen= command
-  - [ ] XCode project for app, using CLI/library as internal dependency
+  - [X] XCode project for app, using CLI/library as internal dependency
 - [ ] Read config (see also 'Auto detection' below)
   - [ ] Location of =emacsclient=
     - Can rely on PATH for the terminal case.
