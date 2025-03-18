@@ -31,8 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("Hello World from SwiftUI menu bar app!")
 
         runCommand("\(path)")
-
-        // NSApp.terminate(nil)
     }
     func applicationWillTerminate(_ notification: Notification) { print("bye from callback") }
 
