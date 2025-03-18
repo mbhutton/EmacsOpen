@@ -11,7 +11,7 @@ format:
 
 build-cli-release:
   @echo "Building CLI..."
-  swift build --configuration release --product emacsopen -Xswiftc -diagnostic-style=llvm
+  swift build --configuration release --product emacsopen
 
 build-app-release:
   @echo "Building App using Xcode..."
