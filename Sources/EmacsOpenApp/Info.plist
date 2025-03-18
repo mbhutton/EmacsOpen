@@ -13,7 +13,7 @@
     <key>CFBundleExecutable</key>
     <string>EmacsOpenApp</string>
     <key>LSMinimumSystemVersion</key>
-    <string>12.0</string>
+    <string>14.0</string>
     <key>LSUIElement</key>
     <false />
     <key>CFBundleURLTypes</key>
