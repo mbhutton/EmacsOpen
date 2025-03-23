@@ -56,6 +56,11 @@ Targeting macOS Emacs formulas which run in daemon mode via =brew service= commu
   - [ ] To open an existing Org node by its Org ID
   - [ ] To capture a web page, with url, title, and optional selected text
   - [X] To trigger =org-capture=, eg to add an inbox item
+- [ ] Consider adding an additional URL handler too. Options
+  - =org-id://foo&create-frame=n=
+  - =org://open?id=foo&create-frame=n=
+  - =emacs://open?id=foo=
+  - =emacsopen://quit=
 - [X] Always activate Emacs top window
 - [X] Open frame if necessary
 - [ ] Start daemon if necessary, waiting until ready for =emacsclient= commands
