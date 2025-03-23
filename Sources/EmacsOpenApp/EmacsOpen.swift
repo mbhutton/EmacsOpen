@@ -88,7 +88,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 createFrame: false
             )
         }
-        NSApp.terminate(nil)
     }
 
 }
