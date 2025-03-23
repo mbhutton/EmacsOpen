@@ -1,6 +1,7 @@
 import AppKit
 import Foundation
 
+/// Functions to interact with Emacs via emacsclient and the Emacs daemon
 public struct EmacsOpenLibrary {
 
     static let shared = EmacsOpenLibrary()
@@ -149,4 +150,5 @@ public struct EmacsOpenLibrary {
 
 }
 
+/// EmacsOpenLibrary singleton instance
 public let emacsOpen = EmacsOpenLibrary.shared
