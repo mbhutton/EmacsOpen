@@ -35,8 +35,6 @@ build-app:
 build: build-cli build-app
   @echo "All builds completed"
 
-run:
-  open .DerivedData/Build/Products/Release/EmacsOpen.app
 install-cli:
   @echo "Installing EmacsOpen CLI..."
   mkdir -p ~/sw/emacsopen
@@ -49,6 +47,14 @@ install-app:
 
 install: install-cli install-app
   @echo "All installations completed"
+
+run-installed-app:
+  @echo "Opening installed EmacsOpen app..."
+  open /Applications/EmacsOpen.app
+
+run-installed-cli:
+  @echo "Running installed EmacsOpen CLI..."
+  ~/sw/emacsopen/emacsopen
 
 update-swiftpm:
   @echo "Updating SwiftPM dependencies..."
