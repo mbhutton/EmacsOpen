@@ -1,5 +1,6 @@
 import EmacsOpenLibrary
 import SwiftUI
+import UserNotifications
 
 @main struct MenuBarApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -25,6 +26,12 @@ import SwiftUI
 
                 Divider()
 
+                Button("Show Notification") {
+                    print("Showing Notification")
+                    showNotification(title: "Hello", message: "This is a test notification.")
+                }.padding()
+                Divider()
+
                 Button("Quit EmacsOpen") {
                     print("Quitting EmacsOpen")
                     NSApplication.shared.terminate(nil)
@@ -45,6 +52,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         runCommand(path)
 
         print("Hello World from SwiftUI menu bar app!")
+
+        // Request notification permissions
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+            if let error = error {
+                print("Error requesting notification permissions: \(error.localizedDescription)")
+                return
+            }
+            if granted { print("Notification permissions granted") } else { print("Notification permissions denied") }
+        }
 
         _ = emacsOpen.activateFrame(createFrame: false)
     }
@@ -69,4 +85,19 @@ func runCommand(_ command: String) {
     task.arguments = ["-c", command]
     task.launch()
     task.waitUntilExit()
+}
+
+func showNotification(title: String, message: String) {
+    let content = UNMutableNotificationContent()
+    content.title = title
+    content.body = message
+    content.sound = UNNotificationSound.default
+
+    // Create a request with immediate trigger
+    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+
+    // Add the request to notification center
+    UNUserNotificationCenter.current().add(request) { error in
+        if let error = error { print("Error showing notification: \(error.localizedDescription)") }
+    }
 }
