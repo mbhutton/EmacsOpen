@@ -42,7 +42,8 @@ private func raiseFirstEmacsFrameSafe() -> Bool {
     //   For now, assume an Emacs.app.
     let bundleID = "org.gnu.Emacs"
     if let app = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).first {
-        return app.activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
+        app.activate()
+        return true
     }
     return false
 }
