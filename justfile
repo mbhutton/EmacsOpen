@@ -37,6 +37,18 @@ build: build-cli build-app
 
 run:
   open .DerivedData/Build/Products/Release/EmacsOpen.app
+install-cli:
+  @echo "Installing EmacsOpen CLI..."
+  mkdir -p ~/sw/emacsopen
+  cp ./.build/arm64-apple-macosx/release/emacsopen ~/sw/emacsopen/emacsopen
+
+install-app:
+  @echo "Installing EmacsOpen.app..."
+  killall EmacsOpen || true
+  cp -R .DerivedData/Build/Products/Release/EmacsOpen.app /Applications/
+
+install: install-cli install-app
+  @echo "All installations completed"
 
 update-swiftpm:
   @echo "Updating SwiftPM dependencies..."
