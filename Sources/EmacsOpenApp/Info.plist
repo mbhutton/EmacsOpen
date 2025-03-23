@@ -15,7 +15,7 @@
     <key>LSMinimumSystemVersion</key>
     <string>14.0</string>
     <key>LSUIElement</key>
-    <false />
+    <true />
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
