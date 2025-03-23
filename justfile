@@ -40,6 +40,7 @@ run:
 
 update-swiftpm:
   @echo "Updating SwiftPM dependencies..."
+  rm -f Package.resolved
   swift package update
 
 update-xcode-project:
