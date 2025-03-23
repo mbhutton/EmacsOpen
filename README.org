@@ -51,7 +51,8 @@ Targeting macOS Emacs formulas which run in daemon mode via =brew service= commu
   - [ ] =org-protocol://= scheme config
     - Follow the most popular convention by default.
 - [ ] Handle opening files via drag and drop and opening via Finder (with frame already open). Or maybe just as 'Open With...'
-- [ ] Handle =org-protocol://= links (with frame already open)
+- [ ] Register as default handler for =*.org= files
+- [-] Handle =org-protocol://= links (with frame already open)
   - [ ] To open an existing Org node by its Org ID
   - [ ] To capture a web page, with url, title, and optional selected text
   - [X] To trigger =org-capture=, eg to add an inbox item
