@@ -15,6 +15,8 @@ clean:
   rm -rf .build/
   rm -rf .swiftpm/
 
+full-rebuild: clean update-swiftpm update-xcode-project format lint build
+
 build-cli:
   @echo "Building CLI..."
   # Note: define -warning-as-errors here, not in Package.swift, because Xcode will always pass the
