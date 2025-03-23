@@ -64,6 +64,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         _ = emacsOpen.activateFrame(createFrame: false)
     }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        _ = emacsOpen.activateFrame(createFrame: false)
+        return true
+    }
+
     func applicationWillTerminate(_ notification: Notification) { print("bye from callback") }
 
     func application(_ application: NSApplication, open urls: [URL]) {
