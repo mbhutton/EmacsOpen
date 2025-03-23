@@ -43,14 +43,8 @@ import UserNotifications
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    let path = "/Users/matt/sw/emacsopen/emacsopen"
-
     func applicationDidFinishLaunching(_: Notification) {
         NSApp.setActivationPolicy(.accessory)
-        let path = "/Users/matt/sw/emacsopen/emacsopen"
-        runCommand("echo hello")
-        runCommand(path)
-
         print("Hello World from SwiftUI menu bar app!")
 
         // Request notification permissions
@@ -80,24 +74,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ notification: Notification) { print("bye from callback") }
 
     func application(_ application: NSApplication, open urls: [URL]) {
-        for url in urls {
-            if url.scheme == "org-protocol" {
-                runCommand("\(path) emacsopen \(url.absoluteString)")
-            } else {
-                runCommand("\(path) eemacsopen \(url.path)")
-            }
+        // Called when (re-)opened via 'open -a EmacsOpenApp <file-or-url>'
+        showNotification(
+            title: "Opening URLs",
+            message: "URLs: \(urls.map { $0.absoluteString }.joined(separator: ", "))"
+        )
+        if urls.isEmpty {
+            _ = emacsOpen.activateFrame(createFrame: false)
+        } else {
+            _ = emacsOpen.openInGui(
+                filesOrLink: urls.map { $0.scheme == "org-protocol" ? $0.absoluteString : $0.path },
+                block: false,
+                createFrame: false
+            )
         }
         NSApp.terminate(nil)
     }
 
-}
-
-func runCommand(_ command: String) {
-    let task = Process()
-    task.launchPath = "/bin/bash"
-    task.arguments = ["-c", command]
-    task.launch()
-    task.waitUntilExit()
 }
 
 func showNotification(title: String, message: String) {
