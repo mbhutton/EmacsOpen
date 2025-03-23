@@ -10,7 +10,6 @@
 		C95922102D889B6700C6BE09 /* EmacsOpenLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = C959220F2D889B6700C6BE09 /* EmacsOpenLibrary */; };
 		C95EB5392D82DEF700B38586 /* EmacsOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95EB5382D82DEF400B38586 /* EmacsOpen.swift */; };
 		C95EB53D2D82E5C700B38586 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95EB53C2D82E5C700B38586 /* SwiftUI.framework */; };
-		C9DCF97F2D82DC18009DCE78 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9DCF97C2D82DC18009DCE78 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,7 +18,7 @@
 		C96B30992D8F3B7900D06AF4 /* .xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text; path = .xcconfig; sourceTree = "<group>"; };
 		C972C4A42D82B697006991D5 /* EmacsOpen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmacsOpen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DCF9772D82DB38009DCE78 /* EmacsOpen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EmacsOpen.entitlements; sourceTree = "<group>"; };
-		C9DCF97C2D82DC18009DCE78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9E193952D900927007D8E80 /* EmacsOpen-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "EmacsOpen-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +45,7 @@
 		C972C49B2D82B697006991D5 = {
 			isa = PBXGroup;
 			children = (
+				C9E193952D900927007D8E80 /* EmacsOpen-Info.plist */,
 				C96B30992D8F3B7900D06AF4 /* .xcconfig */,
 				C9DCF9792D82DB38009DCE78 /* EmacsOpenApp */,
 				C94966532D82D30300427100 /* Frameworks */,
@@ -64,7 +64,6 @@
 		C9DCF9792D82DB38009DCE78 /* EmacsOpenApp */ = {
 			isa = PBXGroup;
 			children = (
-				C9DCF97C2D82DC18009DCE78 /* Info.plist */,
 				C9DCF9772D82DB38009DCE78 /* EmacsOpen.entitlements */,
 				C95EB5382D82DEF400B38586 /* EmacsOpen.swift */,
 			);
@@ -137,7 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DCF97F2D82DC18009DCE78 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +287,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EmacsOpen-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -319,6 +318,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EmacsOpen-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
