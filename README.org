@@ -51,6 +51,7 @@ Targeting macOS Emacs formulas which run in daemon mode via =brew service= commu
   - [ ] =org-protocol://= scheme config
     - Follow the most popular convention by default.
 - [ ] Handle opening files via drag and drop and opening via Finder (with frame already open). Or maybe just as 'Open With...'
+- [ ] Handle reactivation via =tell application "EmacsOpen" to activate= when open and when closed
 - [ ] Register as default handler for =*.org= files
 - [-] Handle =org-protocol://= links (with frame already open)
   - [ ] To open an existing Org node by its Org ID
@@ -65,6 +66,7 @@ Targeting macOS Emacs formulas which run in daemon mode via =brew service= commu
 - [X] Open frame if necessary
 - [ ] Start daemon if necessary, waiting until ready for =emacsclient= commands
 - [X] =open -a EmacsOpen= should open Emacs, creating a frame if necessary, and activate Emacs
+- [X] =open -a EmacsOpen foo.txt= should open Emacs, creating a frame if necessary, and activate Emacs, with the given (existing) file
 - [ ] Ensure useful for emacs restart
   - Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
 - [ ] Act as a share target to invoke the command org-protocol convention of url, title, and text.
