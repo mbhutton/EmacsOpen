@@ -18,7 +18,12 @@ build-cli:
 build-app:
   @echo "Building App using Xcode..."
   # Build the app using xcodebuild
-  xcodebuild -project EmacsOpen.xcodeproj -scheme EmacsOpen -quiet -configuration Release clean build
+  xcodebuild \
+    -project EmacsOpen.xcodeproj -scheme EmacsOpen \
+    -configuration Release \
+    -quiet \
+    clean \
+    build
 
 build: build-cli build-app
   @echo "All builds completed"
