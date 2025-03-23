@@ -39,6 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let path = "/Users/matt/sw/emacsopen/emacsopen"
 
     func applicationDidFinishLaunching(_: Notification) {
+        NSApp.setActivationPolicy(.accessory)
         let path = "/Users/matt/sw/emacsopen/emacsopen"
         runCommand("echo hello")
         runCommand(path)
