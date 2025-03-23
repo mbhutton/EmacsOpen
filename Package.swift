@@ -1,7 +1,7 @@
 // swift-tools-version:5.9
 import PackageDescription
 
-let COMPILER_FLAGS = ["-diagnostic-style=llvm", "-warnings-as-errors"]
+let COMPILER_FLAGS = ["-diagnostic-style=llvm"]  // See Justfile for more '-Xswiftc' flags
 
 let package = Package(
     name: "EmacsOpen",

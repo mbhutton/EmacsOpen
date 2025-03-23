@@ -11,7 +11,9 @@ format:
 
 build-cli-release:
   @echo "Building CLI..."
-  swift build --configuration release --product emacsopen
+  # Note: define -warning-as-errors here, not in Package.swift, because Xcode will always pass the
+  # incompatible -suppress-warnings flag when building the library automatically from the Xcode GUI.
+  swift build --configuration release --product emacsopen -Xswiftc -warnings-as-errors
 
 build-app-release:
   @echo "Building App using Xcode..."
