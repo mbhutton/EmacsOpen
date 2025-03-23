@@ -9,6 +9,12 @@ format:
   @echo "Formatting Swift files..."
   swift-format format --in-place --recursive .
 
+clean:
+  @echo "Cleaning build artifacts..."
+  rm -rf .DerivedData/
+  rm -rf .build/
+  rm -rf .swiftpm/
+
 build-cli:
   @echo "Building CLI..."
   # Note: define -warning-as-errors here, not in Package.swift, because Xcode will always pass the
