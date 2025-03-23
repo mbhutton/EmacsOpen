@@ -1,6 +1,11 @@
 import AppKit
 import Foundation
 
+public struct EmacsOpenLibrary {
+
+    static let shared = EmacsOpenLibrary()
+    private init() {}
+
 /// Ensures that emacsclient is ready to accept commands, or returns false if unable.
 private func ensureClient() -> Bool {
     let result: CommandResult = runEmacsClient("--eval '(+ 40 2)'")
@@ -139,3 +144,7 @@ private func getEmacsClientPath() -> String {
     // TODO: Make this configurable and/or auto-detect
     "/opt/homebrew/bin/emacsclient"
 }
+
+}
+
+public let emacsOpen = EmacsOpenLibrary.shared

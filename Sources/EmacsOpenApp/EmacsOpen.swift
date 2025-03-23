@@ -13,14 +13,14 @@ import SwiftUI
 
                 Button("Activate Frame") {
                     print("Activating Frame")
-                    _ = activateFrame()
+                    _ = emacsOpen.activateFrame()
                 }.padding()
 
                 Divider()
 
                 Button("Create Frame") {
                     print("Creating Frame")
-                    _ = activateFrame(createFrame: true)
+                    _ = emacsOpen.activateFrame(createFrame: true)
                 }.padding()
 
                 Divider()
@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         print("Hello World from SwiftUI menu bar app!")
 
-        _ = activateFrame(createFrame: false)
+        _ = emacsOpen.activateFrame(createFrame: false)
     }
     func applicationWillTerminate(_ notification: Notification) { print("bye from callback") }
 

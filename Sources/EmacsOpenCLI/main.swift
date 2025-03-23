@@ -21,20 +21,20 @@ struct EmacsOpenCLI: ParsableCommand {
         }
         if eval {
             if files.count == 1 {
-                failIfFalse(evalInEmacs(command: files[0]))
+                failIfFalse(emacsOpen.evalInEmacs(command: files[0]))
             } else {
                 failAndExit("The --eval option requires exactly one command argument\n")
             }
         } else if tty {
-            failIfFalse(openInTerminal(filesOrLink: files))
+            failIfFalse(emacsOpen.openInTerminal(filesOrLink: files))
         } else {
             if block && files.isEmpty {
                 failAndExit("The --block option requires at least one file or org-protocol link argument\n")
             }
             if files.isEmpty {
-                failIfFalse(activateFrame(createFrame: createFrame))
+                failIfFalse(emacsOpen.activateFrame(createFrame: createFrame))
             } else {
-                failIfFalse(openInGui(filesOrLink: files, block: block, createFrame: createFrame))
+                failIfFalse(emacsOpen.openInGui(filesOrLink: files, block: block, createFrame: createFrame))
             }
         }
     }
