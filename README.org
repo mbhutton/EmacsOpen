@@ -13,8 +13,8 @@ Targeting macOS Emacs formulas which run in daemon mode via =brew service= commu
 - To make opening things in Emacs and opening Emacs itself "Just Work", without having to think about what state Emacs is currently in, and without having to always leave an Emacs frame open.
 - To be able to open more things in Emacs than is supported natively, including web links (for org-capture) and =org-protocol://= links, to support easier sharing from other apps to Emacs.
 - To achieve the above in a single tool with minimal configuration.
-* Status: Just starting
-- Some initial skeleton code.
+* Status: In development
+- Initial app and CLI build
 - Most of the CLI variants implemented, without daemon management.
 - Expect frequent history rewrites.
 - See roadmap below for rough plan.
@@ -50,15 +50,15 @@ Targeting macOS Emacs formulas which run in daemon mode via =brew service= commu
   - [ ] Name of brew service to use for starting Emacs daemon
   - [ ] =org-protocol://= scheme config
     - Follow the most popular convention by default.
-- [ ] Handle opening files via drag and drop and opening via Finder (with frame already open)
+- [ ] Handle opening files via drag and drop and opening via Finder (with frame already open). Or maybe just as 'Open With...'
 - [ ] Handle =org-protocol://= links (with frame already open)
   - [ ] To open an existing Org node by its Org ID
   - [ ] To capture a web page, with url, title, and optional selected text
-  - [ ] To trigger =org-capture=, eg to add an inbox item
+  - [X] To trigger =org-capture=, eg to add an inbox item
 - [X] Always activate Emacs top window
 - [X] Open frame if necessary
 - [ ] Start daemon if necessary, waiting until ready for =emacsclient= commands
-- [ ] =open -a EmacsOpen= should open Emacs, creating a frame if necessary, and activate Emacs
+- [X] =open -a EmacsOpen= should open Emacs, creating a frame if necessary, and activate Emacs
 - [ ] Ensure useful for emacs restart
   - Eg support ~brew services stop emacs-plus@30; doom sync; emacsopen activate-frame~
 - [ ] Act as a share target to invoke the command org-protocol convention of url, title, and text.
