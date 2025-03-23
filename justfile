@@ -20,6 +20,7 @@ build-app:
   # Build the app using xcodebuild
   xcodebuild \
     -project EmacsOpen.xcodeproj -scheme EmacsOpen \
+    -derivedDataPath ./.DerivedData \
     -configuration Release \
     -quiet \
     clean \

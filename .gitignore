@@ -1,4 +1,5 @@
 /.build/
+/.DerivedData/
 /.swiftpm/
 xcuserdata/
 xcshareddata/
