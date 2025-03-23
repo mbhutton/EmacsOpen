@@ -35,6 +35,9 @@ build-app:
 build: build-cli build-app
   @echo "All builds completed"
 
+run:
+  open .DerivedData/Build/Products/Release/EmacsOpen.app
+
 update-swiftpm:
   @echo "Updating SwiftPM dependencies..."
   swift package update
