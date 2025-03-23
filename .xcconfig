@@ -1,0 +1,8 @@
+// Config ref: https://help.apple.com/xcode/#/dev745c5c974
+// Note: these settings only affect the app, not the library or CLI.
+
+// Enable strict compilation
+GCC_TREAT_WARNINGS_AS_ERRORS = YES
+MTL_TREAT_WARNINGS_AS_ERRORS = YES
+SWIFT_TREAT_WARNINGS_AS_ERRORS = YES
+SWIFT_SUPPRESS_WARNINGS = NO
