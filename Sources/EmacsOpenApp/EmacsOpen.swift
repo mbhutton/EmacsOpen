@@ -70,6 +70,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
+    func application(_ sender: NSApplication, openFile filename: String) -> Bool {
+        // TODO: Find how to trigger this, e.g. for "Open with..."
+        showNotification(title: "Opening file", message: filename)
+        _ = emacsOpen.openInGui(filesOrLink: [filename], block: false, createFrame: false)
+        return true
+    }
+
     func applicationWillTerminate(_ notification: Notification) { print("bye from callback") }
 
     func application(_ application: NSApplication, open urls: [URL]) {
